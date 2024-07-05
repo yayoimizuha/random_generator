@@ -1,8 +1,8 @@
 #include <iostream>
 #include <random>
 #include <fstream>
+#include "settings.hpp"
 
-#define NUMBER (1000*1000)
 #define SORTED_RATIO .4
 using namespace std;
 
@@ -14,7 +14,7 @@ int main() {
 
         uniform_int_distribution<int> intDistribution(1, 30);
         uniform_int_distribution<int> _switch(1, 1000);
-        ofstream file("forward_order_" + to_string(i) + ".txt");
+        ofstream file("part_sorted_" + to_string(i) + ".txt");
         for (int j = 0; j < NUMBER; ++j) {
             if (j > NUMBER * SORTED_RATIO) {
                 file << intDistribution(engine) << endl;

@@ -1,8 +1,8 @@
 #include <iostream>
 #include <random>
 #include <fstream>
+#include "settings.hpp"
 
-#define NUMBER (1000*1000)
 using namespace std;
 
 int main() {

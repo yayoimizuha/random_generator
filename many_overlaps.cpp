@@ -1,10 +1,9 @@
 #include <iostream>
 #include <random>
 #include <fstream>
+#include "settings.hpp"
 
 using namespace std;
-#define NUMBER (1000*1000)
-
 int main() {
 #pragma omp parallel for default(none)
     for (int i = 0; i < 20; ++i) {
