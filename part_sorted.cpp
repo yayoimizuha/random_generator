@@ -14,13 +14,16 @@ int main() {
 
         uniform_int_distribution<int> intDistribution(1, 30);
         uniform_int_distribution<int> _switch(1, 1000);
+        string output = ""s;
         ofstream file("part_sorted_" + to_string(i) + ".txt");
         for (int j = 0; j < NUMBER; ++j) {
             if (j > NUMBER * SORTED_RATIO) {
-                file << intDistribution(engine) << endl;
+                output += to_string(intDistribution(engine)) + "\n";
             } else {
-                file << j << endl;
+                output += to_string(j) + "\n";
             }
         }
+        output.pop_back();
+        file << output << flush;
     }
 }

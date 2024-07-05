@@ -13,8 +13,11 @@ int main() {
 
         uniform_int_distribution<int> intDistribution(1, 1000 * 500);
         ofstream file("uniform_random_" + to_string(i) + ".txt");
+        string output = ""s;
         for (int j = 0; j < NUMBER; ++j) {
-            file << intDistribution(engine) << endl;
+            output += to_string(intDistribution(engine)) + "\n";
         }
+        output.pop_back();
+        file << output << flush;
     }
 }

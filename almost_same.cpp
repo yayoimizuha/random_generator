@@ -13,14 +13,17 @@ int main() {
 
         uniform_int_distribution<int> intDistribution(1, 30);
         uniform_int_distribution<int> _switch(1, 1000);
+        auto output = ""s;
         ofstream file("almost_same_" + to_string(i) + ".txt");
         auto base = intDistribution(engine);
         for (int j = 0; j < NUMBER; ++j) {
             if (_switch(engine) == 1) {
-                file << intDistribution(engine) << endl;
+                output += to_string(intDistribution(engine)) + "\n";
             } else {
-                file << base << endl;
+                output += to_string(base) + "\n";
             }
         }
+        output.pop_back();
+        file << output << flush;
     }
 }
