@@ -2,8 +2,9 @@
 #include <random>
 #include <fstream>
 
-using namespace std;
 #define NUMBER (1000*1000)
+#define SORTED_RATIO .4
+using namespace std;
 
 int main() {
 #pragma omp parallel for default(none)
@@ -12,9 +13,14 @@ int main() {
         mt19937 engine(seed_gen());
 
         uniform_int_distribution<int> intDistribution(1, 30);
-        ofstream file("many_overlaps_" + to_string(i) + ".txt");
+        uniform_int_distribution<int> _switch(1, 1000);
+        ofstream file("forward_order_" + to_string(i) + ".txt");
         for (int j = 0; j < NUMBER; ++j) {
-            file << intDistribution(engine) << endl;
+            if (j > NUMBER * SORTED_RATIO) {
+                file << intDistribution(engine) << endl;
+            } else {
+                file << j << endl;
+            }
         }
     }
 }
